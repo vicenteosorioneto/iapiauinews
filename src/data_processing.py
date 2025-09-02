@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 def clean_text(text):
     """
@@ -35,14 +36,25 @@ def analyze_sentiment(text, positive_words, negative_words):
     else:
         return "neutro"
 
-# Definindo minha listas de palavras
-positive_words = ["avanço", "inovação", "benefício", "crescimento", "oportunidade", "desenvolvimento", "tecnologia", "educação", "investimento", "futuro"]
-negative_words = ["risco", "ameaça", "desemprego", "problema", "preocupação", "perigo", "vício", "viés", "invasão", "culpa"]
+# Definindo minhas listas de palavras
+positive_words = ["avanço", "inovação", "benefício", "crescimento", "oportunidade", 
+                 "desenvolvimento", "tecnologia", "educação", "investimento", "futuro",
+                 "sucesso", "progresso", "ganho", "melhoria", "vantagem"]
+
+negative_words = ["risco", "ameaça", "desemprego", "problema", "preocupação", 
+                 "perigo", "vício", "viés", "invasão", "culpa", "crítica",
+                 "alerta", "dano", "prejuízo", "retrocesso"]
+
 def main():
-    # meu código principal aqui
-   def main():
-    # 1. Carregar os dados coletados (supondo que estejam em um CSV)
-    df = pd.read_csv('../data/raw_news.csv')
+    try:
+        # 1. Carregar os dados coletados REAIS
+        df = pd.read_csv('data/raw_news.csv')
+        print(f"📊 Processando {len(df)} notícias reais")
+        
+    except FileNotFoundError:
+        print("❌ Arquivo data/raw_news.csv não encontrado. Execute a coleta primeiro.")
+        print("💡 Execute: python src/data_collection.py")
+        return pd.DataFrame()
 
     # 2. Limpar os textos (título e descrição)
     df['cleaned_title'] = df['title'].apply(clean_text)
@@ -56,10 +68,20 @@ def main():
         lambda text: analyze_sentiment(text, positive_words, negative_words)
     )
 
-    # 5. Salvar os dados processados
-    df.to_csv('../data/processed_news.csv', index=False)
-    print("Processamento concluído! Dados salvos em '../data/processed_news.csv'")
+    # 5. Adicionar data de processamento
+    df['processed_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
+    # 6. Salvar os dados processados
+    df.to_csv('data/processed_news.csv', index=False, encoding='utf-8')
+    print("✅ Processamento concluído! Dados salvos em 'data/processed_news.csv'")
+    
+    # 7. Mostrar estatísticas
+    print("📈 Distribuição de sentimentos:")
+    sentiment_counts = df['sentiment'].value_counts()
+    for sentiment, count in sentiment_counts.items():
+        percentage = (count / len(df)) * 100
+        print(f"   {sentiment}: {count} notícias ({percentage:.1f}%)")
+    
     return df
 
 if __name__ == "__main__":

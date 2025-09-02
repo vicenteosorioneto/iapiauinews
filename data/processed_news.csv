@@ -1,16 +1,3 @@
-title,description,sentiment
-Governo do Piauí anuncia investimento de R$ 5 milhões em IA,Recursos serão destinados a startups e pesquisas na área de tecnologia,positivo
-UFPI lança curso de especialização em Inteligência Artificial,Curso visa capacitar profissionais para o mercado de tecnologia,positivo
-Startup piauiense desenvolve IA para diagnóstico médico,Sistema auxilia médicos no diagnóstico de doenças raras,positivo
-Prefeitura de Teresina implementa chatbot com IA para serviços públicos,Atendimento automatizado melhorou eficiência em 40%,positivo
-Especialistas alertam para riscos de viés algorítmico em sistemas de IA,Estudo mostra que algoritmos podem perpetuar discriminações,negativo
-Seduc Piauí discuso uso de IA na educação básica,Encontro debateu potencial e desafios da tecnologia nas escolas,positivo
-Empresas do Piauí adotam IA para aumento de produtividade,Setor de comércio eletrônico lidera adoção da tecnologia,positivo
-Debate sobre regulamentação de IA no legislativo estadual,Projeto de lei busca estabelecer diretrizes para uso ético,neutro
-IA ajuda no combate à desertificação no sul do Piauí,Sistema prevê áreas de risco e ajuda no planejamento ambiental,positivo
-Hackathon de IA atrai estudantes de todo o estado,Evento reuniu mais de 200 participantes no Parque Tecnológico,positivo
-Críticas ao uso de IA em processos seletivos no Piauí,Candidatos relatam falta de transparência em processos automatizados,negativo
-Pesquisadores da UESPI desenvolvem IA para agricultura familiar,Tecnologia ajuda pequenos agricultores a aumentar produtividade,positivo
-IA é usada para otimizar trânsito em Teresina,Sistema adapta semáforos em tempo real conforme fluxo de veículos,positivo
-Preocupação com proteção de dados em sistemas de IA,Especialistas pedem maior transparência no uso de dados pessoais,negativo
-Piauí se destaca no nordeste em projetos de IA,Estado se torna referência em inovação tecnológica na região,positivo
+title,description,cleaned_title,cleaned_description,combined_text,sentiment,processed_at
+IA avança no Piauí,Grande inovação tecnológica.,IA avança no Piauí,Grande inovação tecnológica,IA avança no Piauí Grande inovação tecnológica,positivo,2025-09-02 16:46:33
+Preocupações com IA,Riscos do desemprego.,Preocupações com IA,Riscos do desemprego,Preocupações com IA Riscos do desemprego,negativo,2025-09-02 16:46:33
