@@ -1,0 +1,6 @@
+# Adicione isso ao arquivo .gitignore
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.csv
