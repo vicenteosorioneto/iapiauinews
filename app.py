@@ -56,9 +56,9 @@ fig_pizza = px.pie(
 )
 st.plotly_chart(fig_pizza, use_container_width=True)
 
-# Nuvem de Palavras
-st.header("☁️ Nuvem de Palavras mais Frequentes")
-all_text = ' '.join(df_filtered['combined_text'].dropna())
+# Combine título e descrição
+df_filtered['texto_completo'] = df_filtered['title'].astype(str) + ' ' + df_filtered['description'].astype(str)
+all_text = ' '.join(df_filtered['texto_completo'].dropna())
 if all_text.strip():
     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_text)
     fig, ax = plt.subplots(figsize=(10, 5))
@@ -76,7 +76,7 @@ for _, row in df_filtered.iterrows():
         st.write(f"**Sentimento:** {row['sentiment']}")
         st.write(f"**Link:** [Ver notícia](#)")  # Adicione os links reais depois
 
-# Rodapé com aviso de limitações
+# Rodapé com aviso de limitações - ADICIONE ISSO NO FINAL DO ARQUIVO
 st.markdown("---")
 st.warning("""
 **⚠️ Limitações do Modelo:** 
