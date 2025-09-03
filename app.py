@@ -9,6 +9,8 @@ import requests
 from xml.etree import ElementTree
 import re
 import html
+import os
+import json
 
 # Configuração da página
 st.set_page_config(
@@ -32,6 +34,42 @@ st.markdown("""
 # Título do dashboard
 st.markdown('<h1 class="main-header">🤖 Monitoramento de IA no Piauí</h1>', unsafe_allow_html=True)
 st.markdown("---")
+
+# Funções para gerar arquivos CSV/JSON (ENTREGÁVEIS OBRIGATÓRIOS)
+def generate_output_files(df):
+    """
+    Gera os arquivos de output obrigatórios do case
+    """
+    try:
+        # Criar diretório se não existir
+        os.makedirs('data', exist_ok=True)
+        
+        # 1. Salvar CSV (ENTREGÁVEL OBRIGATÓRIO)
+        csv_path = 'processed_news.csv'
+        df.to_csv(csv_path, index=False, encoding='utf-8-sig')
+        print(f"✅ CSV salvo: {csv_path}")
+        
+        # 2. Salvar JSON (opcional)
+        json_path = 'data/processed_news.json'
+        json_data = {
+            "metadata": {
+                "generated_at": datetime.now().isoformat(),
+                "total_news": len(df),
+                "source": "Google News RSS",
+                "query": "Inteligência Artificial Piauí"
+            },
+            "data": df.to_dict(orient='records')
+        }
+        
+        with open(json_path, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, ensure_ascii=False, indent=2)
+        print(f"✅ JSON salvo: {json_path}")
+        
+        return csv_path, json_path
+        
+    except Exception as e:
+        print(f"❌ Erro ao gerar arquivos: {e}")
+        return None, None
 
 # Funções para buscar e processar notícias
 def fetch_news_rss(search_query, num_news=15):
@@ -180,6 +218,13 @@ def load_data():
                 freq='D'
             )
         
+        # GERAR ARQUIVOS DE OUTPUT (ENTREGÁVEL OBRIGATÓRIO)
+        try:
+            csv_path, json_path = generate_output_files(df)
+            print(f"📊 Arquivos do case gerados: {csv_path}")
+        except Exception as e:
+            print(f"⚠️ Erro ao gerar arquivos do case: {e}")
+        
         return df
         
     except Exception as e:
@@ -204,7 +249,7 @@ def load_data():
                 'Governo do Estado incentiva startups de IA',
                 'Problemas técnicos afetam sistema de IA do governo',
                 'Preocupações com privacidade em projeto de IA',
-                'Falta de verbra atrasa projetos de IA no estado',
+                'Falta de verba atrasa projetos de IA no estado',
                 'Críticas à implementação de IA na saúde',
                 'Desafios na adoção de IA por pequenas empresas'
             ],
@@ -239,6 +284,14 @@ def load_data():
             'data': pd.date_range(start='2024-01-01', periods=20, freq='D')
         }
         df = pd.DataFrame(data)
+        
+        # GERAR ARQUIVOS DE OUTPUT TAMBÉM NO MODO FALLBACK
+        try:
+            csv_path, json_path = generate_output_files(df)
+            print(f"📊 Arquivos do case gerados (fallback): {csv_path}")
+        except Exception as e:
+            print(f"⚠️ Erro ao gerar arquivos do case (fallback): {e}")
+        
         # Selecionar apenas 15 notícias para manter o padrão
         return df.head(15)
 
@@ -343,7 +396,7 @@ with tab2:
     
     text_source = st.radio(
         "Fonte do texto:",
-        ["Títulos", "Descrições", "Ambos"],
+        ["Títulos", 'Descrições', "Ambos"],
         horizontal=True
     )
     
