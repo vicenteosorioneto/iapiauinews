@@ -1,55 +1,62 @@
-<<<<<<< HEAD
-#  IA Piauí News - Monitoramento de Percepção sobre IA no Piauí
+# 🤖 IA Piauí Monitor - Dashboard de Análise de Notícias
 
-Dashboard interativo para monitorar e analisar notícias sobre Inteligência Artificial no estado do Piauí.
+Dashboard interativo para monitoramento e análise de sentimentos sobre Inteligência Artificial no estado do Piauí.
 
-# Funcionalidades
+## 📊 Sobre o Projeto
 
--  **Análise de Sentimento** baseada em regras
--  **Nuvem de Palavras** com termos mais frequentes  
--  **Gráficos interativos** de distribuição de sentimentos
--  **Filtros** por tipo de sentimento
--  **Transparência** com avisos sobre limitações do modelo
+Este projeto foi desenvolvido como parte de um case técnico para monitoramento da percepção pública sobre Inteligência Artificial no Piauí. O sistema coleta, processa e analisa notícias em tempo real, classificando o sentimento das publicações e apresentando os resultados através de visualizações interativas.
 
-## 📦 Instalação
+### 🎯 Objetivos
+- Monitorar menções sobre IA no Piauí em fontes de notícias
+- Realizar análise de sentimento automatizada
+- Identificar temas recorrentes e tendências
+- Fornecer insights através de visualizações intuitivas
 
-```bash
-# Clone o repositório
+### 👥 Público-Alvo
+- Estudantes de graduação em Tecnologia e áreas afins
+- Pesquisadores e acadêmicos
+- Gestores públicos e tomadores de decisão
+- Empresas de tecnologia locais
+- Comunidade interessada em IA no Piauí
+
+## 🚀 Status do Projeto
+
+**✅ Funcional - Versão 1.0**
+
+O projeto está totalmente funcional com as seguintes características:
+- ✅ Coleta automática de notícias via RSS
+- ✅ Análise de sentimento baseada em regras
+- ✅ Dashboard interativo com Streamlit
+- ✅ Visualizações gráficas (Plotly e Matplotlib)
+- ✅ Filtros avançados por sentimento e data
+- ✅ Nuvem de palavras dinâmica
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Python 3.9+**
+- **Streamlit** - Dashboard interativo
+- **Pandas** - Manipulação de dados
+- **Plotly** - Visualizações gráficas
+- **Matplotlib** - Nuvem de palavras
+- **Requests** - Requisições HTTP
+- **BeautifulSoup** - Processamento de HTML/XML
+
+## 📦 Instalação e Execução
+
+### Pré-requisitos
+- Python 3.9 ou superior
+- pip (gerenciador de pacotes Python)
+
+### Passo a Passo
+
+1. Clone o repositório
 git clone https://github.com/vicenteosorioneto/iapiauinews.git
 
-# Entre na pasta do projeto
+2. Entre na pasta do projeto
 cd iapiauinews
 
-# Instale as dependências
+3. Instale as dependências
 pip install -r requirements.txt
 
-# Execute o dashboard Streamlit
+4. Execute o dashboard Streamlit
 streamlit run app.py
-=======
-#  IA Piauí News - Monitoramento de Percepção sobre IA no Piauí
-
-Dashboard interativo para monitorar e analisar notícias sobre Inteligência Artificial no estado do Piauí.
-
-# Funcionalidades
-
--  **Análise de Sentimento** baseada em regras
--  **Nuvem de Palavras** com termos mais frequentes  
--  **Gráficos interativos** de distribuição de sentimentos
--  **Filtros** por tipo de sentimento
--  **Transparência** com avisos sobre limitações do modelo
-
-## 📦 Instalação
-
-```bash
-# Clone o repositório
-git clone https://github.com/vicenteosorioneto/iapiauinews.git
-
-# Entre na pasta do projeto
-cd iapiauinews
-
-# Instale as dependências
-pip install -r requirements.txt
-
-# Execute o dashboard Streamlit
-streamlit run app.py
->>>>>>> 45ec7663e905a0f624594da25481a87d23ea057f
